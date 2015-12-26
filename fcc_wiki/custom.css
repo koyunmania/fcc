@@ -1,0 +1,191 @@
+/* <!--  lessc assets/less/custom.less > assets/styles/custom.css  --> */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+tt,
+var,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+input,
+textarea,
+select,
+button,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f9f9f9;
+  font-family: 'Shadows Into Light';
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+a {
+  text-decoration: none;
+}
+:focus {
+  outline: 0;
+}
+.center {
+  margin: 0 auto;
+  padding-left: 150px;
+  padding-right: 150px;
+}
+.wiki-viewer {
+  padding-top: 30px;
+  position: relative;
+}
+.wiki-viewer .header {
+  font-size: 50px;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  text-align: center;
+}
+.wiki-viewer .search-box {
+  margin-bottom: 60px;
+}
+.wiki-viewer .search-box .search-text {
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, 0);
+  width: 800px;
+  height: 40px;
+  padding-left: 15px;
+  font-size: 20px;
+  color: grey;
+  background: #cedff2;
+  border: solid 1px #a3b0bf;
+}
+.wiki-viewer .search-box .search-text .search {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 40px;
+  padding-left: 10px;
+  width: 750px;
+  background: transparent;
+  font-size: 20px;
+}
+.wiki-viewer .search-box span {
+  float: right;
+  line-height: 40px;
+  padding-right: 120px;
+}
+.wiki-viewer .result-box .result {
+  background: white;
+  margin: 5px;
+  border-radius: 10px;
+  padding: 20px;
+}
+.wiki-viewer .result-box .result a {
+  color: black;
+}
+.wiki-viewer .result-box .result a .title {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 50px;
+}
+.wiki-viewer .result-box .result a .extract {
+  font-size: 15px;
+}

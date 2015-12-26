@@ -1,0 +1,206 @@
+/* <!--  lessc assets/less/custom.less > assets/styles/custom.css  --> */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+tt,
+var,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+input,
+textarea,
+select,
+button,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #cdd422;
+  border-radius: 10px;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #F5F5F5;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #FFF;
+  background-image: -webkit-gradient(linear, 40% 0%, 75% 84%, from(#e05915), to(#e05915), color-stop(0.6, #e05915));
+}
+body {
+  line-height: 1;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #ebe7df;
+  background-color: #e6e9f0;
+  font-family: 'Shadows Into Light';
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+a {
+  text-decoration: none;
+}
+:focus {
+  outline: 0;
+}
+.center {
+  margin: 0 auto;
+  padding-left: 150px;
+  padding-right: 150px;
+}
+.campernews .title {
+  padding: 30px;
+  text-align: center;
+}
+.campernews .title h2 {
+  font-weight: bold;
+  font-size: 50px;
+  color: #663300;
+}
+.campernews .title h3 {
+  font-size: 40px;
+  color: #777;
+}
+.campernews .news .new {
+  line-height: 20px;
+  float: left;
+  width: 200px;
+  margin: 10px;
+  font-size: 15px;
+}
+.campernews .news .new .avatar a img {
+  height: 200px;
+  width: 200px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+.campernews .news .new .info {
+  background: white;
+  height: 85px;
+  padding: 5px;
+  display: block;
+}
+.campernews .news .new .info ul li {
+  display: block;
+}
+.campernews .news .new .info ul li .headline {
+  width: 100px;
+  overflow: hidden;
+}
+.campernews .news .new .info ul li .discuss {
+  text-align: center;
+  width: 65px;
+  background: steelblue;
+  color: white;
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 25px;
+  transform: translate(0, -2px);
+  display: block;
+}
+.campernews .news .new .info ul li .discuss:hover {
+  cursor: pointer;
+}
+.campernews .news .new .info ul li .timePosted {
+  display: block;
+}
