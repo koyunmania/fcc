@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<!-- styles -->
+	<link rel="stylesheet" href="custom.css" />
+	<link rel="stylesheet" href="/home/b/Desktop/debug/projects/fontawesome/css/font-awesome.min.css" />
+	
+	<!-- scripts -->
+	<script type="text/javascript" src="/home/b/Desktop/debug/projects/jquery-1.11.3.js"></script>
+	<script type="text/javascript" src="custom.js"></script>
+	
+	<!-- jquery UI -->
+	<link rel='stylesheet' type='text/css' href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	
+</head>
+<body>
+<div class="center weather-app">
+  <div class="title">
+    <h2>Koyunmania<br/ >Weather App</h2>
+  </div>
+  <div class="weather-info">
+    <ul>
+      <li><h3 id="city"></h3></li>
+      <li><h3 id="temp"></h3></li>
+      <li class="desc"><img id="description_img" src="#" alt="" /><span id="description"></span></li>
+      <li><h3 id="wind"></h3></li>
+    </ul>
+    <button onclick = "initial( 'metric' )">C°</button>
+    <button onclick = "initial( 'imperial' )">F°</button>
+  </div>
+</div>
+</body>
+<style>
+</style>
+</html>

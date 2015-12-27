@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<!-- styles -->
+	<link rel="stylesheet" href="custom.css" />
+	<link rel="stylesheet" href="/home/b/Desktop/debug/projects/fontawesome/css/font-awesome.min.css" />
+	
+	<!-- scripts -->
+	<script type="text/javascript" src="/home/b/Desktop/debug/projects/jquery-1.11.3.js"></script>
+	<script type="text/javascript" src="custom.js"></script>
+	
+	<!-- jquery UI -->
+	<link rel='stylesheet' type='text/css' href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	
+</head>
+<body>
+	<div class="container">
+		<div class="calc_outer_frame">
+			<h4 class="calc_titel">Simple Calculator</h4>
+			<div class="calc_display"> <p class="calc_display_text"></p> </div>
+			<div class="calc_buttons">
+				<div class="calc_buttons_line1">
+					<button onclick="display_update('7')">7</button>
+					<button onclick="display_update('8')">8</button>
+					<button onclick="display_update('9')">9</button>
+					<button onclick="display_update('/')">/</button>
+				</div> <!-- calc_buttons_line1 -->
+				<div class="calc_buttons_line2">
+					<button onclick="display_update('4')">4</button>
+					<button onclick="display_update('5')">5</button>
+					<button onclick="display_update('6')">6</button>
+					<button onclick="display_update('*')">x</button>
+				</div> <!-- calc_buttons_line2 -->
+				<div class="calc_buttons_line3">
+					<button onclick="display_update('1')">1</button>
+					<button onclick="display_update('2')">2</button>
+					<button onclick="display_update('3')">3</button>
+					<button onclick="display_update('-')">-</button>
+				</div> <!-- calc_buttons_line3 -->
+				<div class="calc_buttons_line4">
+					<button onclick="display_update('0')">0</button>
+					<button onclick="display_update('+')">+</button>
+					<button onclick="display_init()">c</button>
+					<button onclick="display_update('.')">.</button>
+				</div> <!-- calc_buttons_line4 -->
+			<div class="calc_buttons_line5">
+					<button onclick="calculate()" class="button_equal">=</button>
+					</div> <!-- calc_buttons_line5 -->
+			</div> <!-- calc_buttons -->
+			
+			
+		</div> <!-- calc_outer_frame -->
+	</div> <!-- container -->
+</body>
+<style>
+</style>
+</html>

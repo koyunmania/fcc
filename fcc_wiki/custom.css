@@ -167,10 +167,13 @@ a {
   background: transparent;
   font-size: 20px;
 }
-.wiki-viewer .search-box span {
-  float: right;
-  line-height: 40px;
-  padding-right: 120px;
+.wiki-viewer .random {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+.wiki-viewer .random p {
+  padding-bottom: 10px;
 }
 .wiki-viewer .result-box .result {
   background: white;

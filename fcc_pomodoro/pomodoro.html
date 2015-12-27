@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<!-- styles -->
+	<link rel="stylesheet" href="custom.css" />
+	<link rel="stylesheet" href="/home/b/Desktop/debug/projects/fontawesome/css/font-awesome.min.css" />
+	
+	<!-- scripts -->
+	<script type="text/javascript" src="/home/b/Desktop/debug/projects/jquery-1.11.3.js"></script>
+	<script type="text/javascript" src="custom.js"></script>
+	
+	<!-- jquery UI -->
+	<link rel='stylesheet' type='text/css' href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	
+</head>
+<body>
+	<div class="container-fluid">
+		<link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
+		<p class="big-middle"><span id="text-pomodoro">Pomodoro</span><br /><span id="text-clock">Clock</span></p>
+		<div class="clock-outer">
+			<div class="clock-inner">
+			</div> <!-- clock-inner -->
+			<p class="big-middle" id="clock-titel">Session</p>
+			<p class="big-middle" id="clock-digital">-:-</p>
+		</div> <!-- clock-outer -->
+		<div class="setup-session user-input">
+			<button type="button" class="inline btn btn-danger" onclick="increaseMinutes('.session_minutes')">+</button>
+			<p class="inline medium session_minutes">25</p>
+			<button type="button" class="btn btn-danger" onclick="decreaseMinutes('.session_minutes')">-</button>
+			<h4 class="inline">Session</h4>
+		</div> <!-- setup-session -->
+		<div class="setup-break user-input">
+			<button type="button" class="inline btn btn-success" onclick="increaseMinutes('.break_minutes')">+</button>
+			<p class="inline medium break_minutes">5</p>
+			<button type="button" class="btn btn-success" onclick="decreaseMinutes('.break_minutes')">-</button>
+			<h4 class="inline">Break</h4>
+		</div> <!-- setup-break --> 
+		<button class="btn btn-default btn-update user-input" onclick="updateCountdown()">Update</button>
+	</div>
+</body>
+<style>
+</style>
+</html>

@@ -1,0 +1,90 @@
+.clock-inner {
+	position:absolute;
+  width:300px;
+  height:300px;
+  clip:rect(2px,300px,300px,0px);
+  /*border-radius:150px;*/
+	border-radius: 50%; /* added */
+  background-color:red;
+  border:none;
+	left:50%;
+	top: 50%; /* added */
+	transform: translate(-50%, -50%); /* added */
+	/*margin-left:-150px;*/
+}
+
+.clock-outer {
+	position:relative;
+  width:310px;
+  height:310px;
+  background-color:none;
+  border-style: solid;
+	border-color: red;
+	border-width: 3px;
+  /*border-radius:150px;*/
+	border-radius: 50%; /* added */
+	left:50%;
+	margin-left:-150px;
+}
+
+.big-middle {
+	text-align: center;
+	font-size: 60px;
+}
+
+.medium {
+	font-size: 30px;
+}
+
+.inline {
+	display: inline;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+#text-pomodoro {
+	font-family:Bangers;
+}
+
+#text-clock {
+	font-family: Anton;
+	color: #007F1B;
+}
+
+#clock-digital {
+	position: relative;
+	bottom: 10%;
+	font-family: Shadows Into Light;
+	font-size: 120px;
+	margin-top: 10%;
+}
+
+ #clock-titel {
+	position: relative;
+	 top: 10%;
+	font-family: Shadows Into Light;
+	font-size: 50px;
+}
+
+h4 {
+	position: relative;
+}
+
+body {
+	background-color: #FF8626;
+}
+
+.btn {
+	margin-top: 10px;
+}
+.btn-update {
+	background-color: black;
+	color: white;
+}
+
+.user-input {
+	position: relative;
+	left:50%;
+	top: 50%; /* added */
+	transform: translate(-50%, -50%); /* added */
+}

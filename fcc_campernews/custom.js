@@ -35,31 +35,3 @@ $(document).ready( function () {
 	});
 });
 
-
-/*
-		var $new = $("<div/>",{ class: "new"});
-		var $avatar = $("<div/>",{ class: "avatar"});
-		var $a = $("<a/>",{});
-		var $img = $("<img/>",{ src: "https://avatars.githubusercontent.com/u/322175?v=3"});
-		$(".new").append( $new.append( $avatar.append( $a.append( $img ) ) ) );
-
-
-[
-	{"id":"567b16b3cb1fb61b66bbc510",
-	"headline":"Why NodeJS is so fast? — Medium",
-	"timePosted":1450907315077,
-	"link":"https://medium.com/@ghaiklor/why-nodejs-is-so-fast-a0ff67858f48#.17f0bu7we",
-	"metaDescription":"Here I am again with an article about NodeJS! Today I want to speak about another NodeJS advantage — execution speed.",
-	"description":"undefined",
-	"rank":4,
-	"upVotes":[
-		{"upVotedBy":"564e1460aeb8dc793c2d1e84","upVotedByUsername":"p1xt"},
-		{"upVotedBy":"558eaef5d292d8f326cac25e","upVotedByUsername":"roamingblue"},
-		{"upVotedBy":"566bb84976dadc340dc2f109","upVotedByUsername":"andreolli"},
-		{"upVotedBy":"565bf03363a1d5dd1d11d7b1","upVotedByUsername":"iamjasn"}],
-	"author":{"picture":"https://avatars.githubusercontent.com/u/322175?v=3",
-				"userId":"564e1460aeb8dc793c2d1e84",
-				"username":"p1xt"},
-	"image":"https://cdn-images-1.medium.com/max/800/1*Te1HNFdDpgCn9ImQivtwRA.jpeg",
-	"storyLink":"why nodejs is so fast medium"}, {"id"...}
-*/

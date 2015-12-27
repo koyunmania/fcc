@@ -1,0 +1,92 @@
+body {
+	width: 100%;
+	height: 100%;
+	color: black;
+}
+
+.navbar {
+	background-color: white;
+}
+
+.page-intro {
+	background: url('https://40.media.tumblr.com/1eb8901ef7a2b73ebf3bb30fe4e46f5a/tumblr_nyhrrpZ4q51umvgawo1_1280.jpg') no-repeat center center fixed;
+	background-size:cover;
+	padding-top: 100px;
+	padding-bottom: 200px;
+	padding-left: 200px;
+	padding-right: 200px;
+	text-align: center;
+	height: 500px;
+}
+
+.page-information {
+	background: url('https://40.media.tumblr.com/2db332c582a6c35a5901bffa7a4586ef/tumblr_nyhrrpZ4q51umvgawo2_1280.jpg') no-repeat center center fixed;
+	background-size:cover;
+	padding-top: 100px;
+	padding-bottom: 200px;
+	padding-left: 200px;
+	padding-right: 200px;
+}
+
+.page-portfolio {
+	background: url("https://40.media.tumblr.com/aa4df7803a1aef88124d3adfd99bcacb/tumblr_nyhrrpZ4q51umvgawo3_1280.jpg") no-repeat center center fixed;
+	background-size: cover;
+	padding-top: 100px;
+	padding-bottom: 200px;
+	padding-left: 200px;
+	padding-right: 200px;
+	text-align: center;
+}
+
+#thumbnail {
+	border: 2px dotted rgba(0, 0, 0, 0.5);
+	margin-bottom: 5px;
+}
+
+.page-contact {
+	background: url("https://40.media.tumblr.com/72eb0229157d825bee7db551b4de3d71/tumblr_nyhrrpZ4q51umvgawo4_1280.jpg") no-repeat center center fixed;
+	background-size: cover;
+	padding-top: 100px;
+	padding-bottom: 200px;
+	padding-left: 200px;
+	padding-right: 200px;
+}
+
+.round-image {
+	border-color: #3F707F;
+	border-width: 10px;
+	border-style: solid;
+	border-radius: 50%;
+}
+
+h1 {
+	font-family: impact;
+	font-size:80px;
+}
+
+h2 {
+	font-family:Francois One;
+	font-size: 40px;
+}
+
+h3 {
+	font-family:Open Sans Condensed;
+	font-size: 30px;
+	font-weight:bold;
+}
+
+p {
+	font-family: Indie Flower;
+	font-size: 20px;
+}
+
+.btn:hover {
+  background: #ff7b29;
+}
+
+#page-footer {
+	padding-top: 50px;
+	padding-bottom: 20px;
+	padding-left: 200px;
+	padding-right: 200px;
+}

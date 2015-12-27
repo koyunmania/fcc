@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<!-- styles -->
+	<link rel="stylesheet" href="custom.css" />
+	<link rel="stylesheet" href="/home/b/Desktop/debug/projects/fontawesome/css/font-awesome.min.css" />
+	
+	<!-- scripts -->
+	<script type="text/javascript" src="/home/b/Desktop/debug/projects/jquery-1.11.3.js"></script>
+	<script type="text/javascript" src="custom.js"></script>
+	
+	<!-- jquery UI -->
+	<link rel='stylesheet' type='text/css' href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="page-titel">
+			<div class="col-md-12">
+				<h2>Random Quote Machine</h2>
+			</div>
+		</div> <!-- "page-titel" -->
+		<div class="page-text">
+			<div class="col-md-12">
+				<p>These are some of my favorite quotes. I hope you enjoy them!</p>
+			</div>
+		</div>
+		<div class="page-button">
+			<div class="col-md-12">
+				<button id="quote_button" onclick="generate()">New Quote</button>
+			</div>
+		</div>
+		<div class="page-quote">
+			<div class="col-md-12">
+				<div class="jumbotron">
+					<h3 id="quote_text"></h3>
+					<p id="quote_owner"></p>
+				</div>
+			</div>
+		</div>
+		<div class="page-tweet">
+			<div class="col-md-12">
+				<a class="twitter-share-button" id="twitter-button" href="https://twitter.com/intent/tweet?text=" data-size="large" target='_blank'>Tweet</a>
+			</div>
+		</div>
+	</div> <!-- "container-fluid" -->
+</body>
+<style>
+</style>
+</html>
