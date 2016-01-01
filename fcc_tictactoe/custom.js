@@ -236,11 +236,8 @@ function playComp( start ){
 	// get the best empty cell to play
 	// curring algorithm minimising looses
 	function bestMove( possibleMoves ){
-<<<<<<< HEAD
 		var looseProbability = 1000000;
-=======
 		var winProbability = 0;
->>>>>>> 498bd049497d3a0a2081fc8da903ee5c8e6c9e2a
 		var winnerIndex = 0;
 		var winnerWins = 0;
 		var winnerLooses = 0;
@@ -319,8 +316,6 @@ function checkGameEnd( start ) {
 		return 0;
 	}
 }
-<<<<<<< HEAD
-=======
 /*
 
 ########### WORKING FUNC MODIFIED ##############
