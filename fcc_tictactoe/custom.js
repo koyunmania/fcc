@@ -22,7 +22,7 @@ $(document).ready( function(){
 		
 		//play computer game
 		currentGame = playComp( currentGame );
-		setMove( currentGame, player );
+		currentGame = setMove( currentGame, player );
 	});	
 });
 
@@ -233,7 +233,8 @@ function playComp( start ){
 		return moves;
 	}
 	
-	// get the best empty cell to play 
+	// get the best empty cell to play
+	// curring algorithm minimising looses
 	function bestMove( possibleMoves ){
 		var looseProbability = 1000000;
 		var winnerIndex = 0;
@@ -269,23 +270,32 @@ function playComp( start ){
 }
 
 // Set the played move on the screen
-function setMove( game, player ) {
+function setMove( start, player ) {
 	for( var i = 1; i <= 9; i++ ) {
-		if ( game.board[ i - 1 ] === -1 ){
+		if ( start.board[ i - 1 ] === -1 ){
 			if( player === "x" )
 				$(".cellp" + i ).text( "x" ).css( "color", "white" );
 			else
 				$(".cellp" + i ).text( "o" ).css( "color", "white" );
 		}
-		else if ( game.board[ i - 1 ] === 1 ){
+		else if ( start.board[ i - 1 ] === 1 ){
 			if( player === "x" )
 				$(".cellp" + i ).text( "o" ).css( "color", "white" );
 			else
 				$(".cellp" + i ).text( "x" ).css( "color", "white" );
 		}
-		else if ( game.board[ i - 1 ] === 0 )
+		else if ( start.board[ i - 1 ] === 0 )
 			$(".cellp" + i ).text( "." ).css( "color", "black" );
 	}
+	if ( start.risk.riskIndex === 3 ) {
+		checkGameEnd( start );
+		var initialState = new game([ 0,  0,  0,
+								0,  0,  0, 
+								0,  0,  0],-1, 0);
+		setMove( initialState );
+		return initialState;
+	}
+	return start;
 }
 
 // Stuff to do if game finished
