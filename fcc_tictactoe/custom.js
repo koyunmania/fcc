@@ -723,4 +723,3 @@ bestMove( getPossibleMoves( start ) );
 console.log( "end" );
 
 */
->>>>>>> 498bd049497d3a0a2081fc8da903ee5c8e6c9e2a
