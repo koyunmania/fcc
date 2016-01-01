@@ -1,16 +1,17 @@
 $(document).ready( function(){
-
-	//						0	1	2
-	//						3	4	5
-	//						6	7	8
+	//Initialise game
 	var currentGame = new game([ 0,  0,  0,
-								  0,  0,  0, 
-								  0,  0,  0],-1, 0);
+									0,  0,  0, 
+									0,  0,  0],-1, 0);
 	var player = "x"
-
+	
+	//Workflow of main function
 	$("a").click( function(){
+		//get which cell is clicked
 		var clickedCell = $(this).attr('class');
 		clickedCell = Number( clickedCell[ clickedCell.length - 1 ] );
+		
+		//Play user game and set move
 		var cloneBoard = currentGame.board.slice();
 		var clonePlayer = 1;
 		var cloneLast = clickedCell - 1;
@@ -18,12 +19,14 @@ $(document).ready( function(){
 		var cloneStart = new game( cloneBoard, clonePlayer, cloneLast );
 		currentGame = cloneStart;
 		setMove( currentGame, player);
-		//checkGameEnd( currentGame );
-		currentGame = play( currentGame );
+		
+		//play computer game
+		currentGame = playComp( currentGame );
 		setMove( currentGame, player );
 	});	
 });
 
+// constructer of game class
 function game( board, player, last ) {
 	this.board = board;
 	this.riskMat = [board[0] + board[1] + board[2],
@@ -40,16 +43,7 @@ function game( board, player, last ) {
 	this.gameLevel = this.evaluateLevel( this.board );
 }
 
-// riskindex  3 = player win
-// riskindex -3 = comp win
-// winRow = the index of the 3 in risk matrix (which row is finished)
-// riskindex 2 = player risk
-// riskCell = which cell should be played next because of danger
-// riskindex -2 = player risk
-// riskCell = which cell should be played next because of chanse to win
-// riskindex -3 = comp win
-// riskindex 0 = no risk, random play
-
+// Evalute gameLevel member for game object ( how many unplayed moves left )
 game.prototype.evaluateLevel = function( board ) {
 	var counter = 0;
 	board.forEach( function( cell ){
@@ -59,6 +53,19 @@ game.prototype.evaluateLevel = function( board ) {
 	return counter;
 }
 
+// Evaluta risk member for game object
+	// riskindex -3|3	= comp win
+		// riskCell		= undefined 
+		// winRow 		= the index of the 3 in risk matrix (which row is finished)
+	// riskindex 2 	= player risk
+		// riskCell 	= which cell should be played next because of danger
+		// winRow		= undefined
+	// riskindex -2 	= player risk
+		// riskCell 	= which cell should be played next because of chanse to win
+		// winRow		= undefined
+	// riskindex 0 = no risk, random play
+		// riskCell 	= undefined
+		// winRow		= undefined
 game.prototype.evaluateRisk = function( board ) {
 	var result = { riskIndex: 0, riskCell: 0, winRow: 0 };
 	var maxRisk = { riskIndex: 0, riskRow: 0 };
@@ -153,13 +160,19 @@ game.prototype.evaluateRisk = function( board ) {
 	return result;
 }
 
-function play( start ){
+// Evaluate the optimal move for computer
+function playComp( start ){
+	// Check if game finished: win, lose or risk
 	switch( start.risk.riskIndex ) {
+		// If win or lose, call finishing front end functions and reset game
 		case -3:
 		case 3:
-			gameEnd( start.risk.riskIndex );
-			return 0;
+			checkGameEnd( start );
+			return new game([ 0,  0,  0,
+								  0,  0,  0, 
+								  0,  0,  0],-1, 0);
 			break;
+		// If risk, play to the risked cell, forget about the optimum 
 		case -2:
 		case 2:
 			var tempBoard = start.board.slice();
@@ -170,10 +183,17 @@ function play( start ){
 			break;
 	}
 	
-	var result = { wins: 0, looses: 0 };
+	// Check if it is a tie, call finishing front end functions and reset game
+	if ( start.gameLevel === 0 ) {
+		checkGameEnd( start );
+		return new game([ 0,  0,  0,
+								0,  0,  0, 
+								0,  0,  0],-1, 0);
+	}
 	
+	// If not finished evaluate all combinations
+	var result = { wins: 0, looses: 0 };
 	function getAllPossibileWins( gameObj ) {
-		// check if game end
 		if( gameObj.risk.riskIndex === 3  ) {
 			result.wins++ ;
 			return "win";
@@ -197,6 +217,7 @@ function play( start ){
 		}
 	}
 	
+	// get to how many empty cells can be played
 	function getPossibleMoves( gameObj ){
 		var moves = [];
 		for ( var i = 0; i < gameObj.board.length; i++ ) {
@@ -212,6 +233,7 @@ function play( start ){
 		return moves;
 	}
 	
+	// get the best empty cell to play 
 	function bestMove( possibleMoves ){
 		winProbability = 0;
 		winnerIndex = 0;
@@ -226,19 +248,12 @@ function play( start ){
 		});
 		return possibleMoves[ winnerIndex ];
 	}
+	
+	// recursive function
 	return bestMove( getPossibleMoves( start ) );
-	console.log();
 }
 
-function gameEnd( val ){
-	if( val ===  3 ) {
-		alert( "you win" );
-	}
-	if( val === -3 ) {
-		alert( "you loose" );
-	}
-}
-
+// Set the played move on the screen
 function setMove( game, player ) {
 	for( var i = 1; i <= 9; i++ ) {
 		if ( game.board[ i - 1 ] === -1 ){
@@ -250,7 +265,6 @@ function setMove( game, player ) {
 		else if ( game.board[ i - 1 ] === 1 ){
 			if( player === "x" )
 				$(".cellp" + i ).text( "o" ).css( "color", "white" );
-				//$(".cellp" + i ).css( "color", "white" );
 			else
 				$(".cellp" + i ).text( "x" ).css( "color", "white" );
 		}
@@ -259,12 +273,20 @@ function setMove( game, player ) {
 	}
 }
 
+// Stuff to do if game finished
 function checkGameEnd( start ) {
 	switch( start.risk.riskIndex ) {
 		case -3:
-		case 3:
-			gameEnd( start.risk.riskIndex );
+			alert( "you win" );
 			return 0;
 			break;
+		case 3:
+			alert( "you lose" );
+			return 0;
+			break;
+	}
+	if ( start.gameLevel === 0 ) {
+		alert( "it's a tie" );
+		return 0;
 	}
 }
