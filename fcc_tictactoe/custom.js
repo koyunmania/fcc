@@ -53,9 +53,11 @@ $(document).ready( function(){
 			currentGame = setMove( currentGame, player );
 			
 			//set computer played cell inactive
-			clickedCells[ currentGame.last ] = true;
-			$( ".cella" + ( currentGame.last + 1 ) ).attr("style", "pointer-events: none;");
-			$( ".cella" + ( currentGame.last + 1 )  ).attr("style", "cursor: default;");
+			if( currentGame.gameLevel !== 9 ) {
+				clickedCells[ currentGame.last ] = true;
+				$( ".cella" + ( currentGame.last + 1 ) ).attr("style", "pointer-events: none;");
+				$( ".cella" + ( currentGame.last + 1 )  ).attr("style", "cursor: default;");
+			}
 		}
 	});	
 });
@@ -228,11 +230,20 @@ function playComp( start ){
 	// If not finished evaluate all combinations
 	var result = { wins: 0, looses: 0 };
 	function getAllPossibileWins( gameObj ) {
+		var counter = 0;
+		gameObj.riskMat.forEach( function( value ){
+			if( value === -2 )
+				counter++;
+		});
+		if( counter === 2 ) { //return a loose if double riskLevel = -2
+			result.looses++;
+			return "loose";
+		}
 		if( gameObj.risk.riskIndex === 3  ) {
 			result.wins++ ;
 			return "win";
 		}
-		else if( gameObj.risk.riskIndex === -3  ) {
+		else if( gameObj.risk.riskIndex === -3 ) {
 			result.looses++;
 			return "loose";
 		}
@@ -339,9 +350,9 @@ function checkGameEnd( start ) {
 			alert( "you win" );
 			
 			//activate anchor links again
-			clickedCells.forEach( function( value ){
-				value = false;
-			});
+			clickedCells = [ false, false, false,
+								false, false, false,
+								false, false, false];
 			$( ".cell" ).attr("style", "pointer-events: auto;");
 			$( ".cell" ).attr("style", "cursor: pointer;");
 			return 0;
@@ -350,9 +361,9 @@ function checkGameEnd( start ) {
 			alert( "you lose" );
 			
 			//activate anchor links again
-			clickedCells.forEach( function( value ){
-				value = false;
-			});
+			clickedCells = [ false, false, false,
+								false, false, false,
+								false, false, false];
 			$( ".cell" ).attr("style", "pointer-events: auto;");
 			$( ".cell" ).attr("style", "cursor: pointer;");
 			return 0;
@@ -362,9 +373,9 @@ function checkGameEnd( start ) {
 		alert( "it's a tie" );
 		
 		//activate anchor links again
-		clickedCells.forEach( function( value ){
-			value = false;
-		});
+		clickedCells = [ false, false, false,
+							false, false, false,
+							false, false, false];
 		$( ".cell" ).attr("style", "pointer-events: auto;");
 		$( ".cell" ).attr("style", "cursor: pointer;");
 		return 0;
