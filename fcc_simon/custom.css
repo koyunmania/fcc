@@ -1,0 +1,211 @@
+/* <!--  lessc assets/less/custom.less > assets/styles/custom.css  --> */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+tt,
+var,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+input,
+textarea,
+select,
+button,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+  font-family: Arial, Helvetica, sans-serif;
+  background: dimgrey;
+  font-family: 'Shadows Into Light';
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+a {
+  text-decoration: none;
+}
+:focus {
+  outline: 0;
+}
+.center {
+  width: 440px;
+  height: 440px;
+  margin: 0 auto;
+}
+.select {
+  display: none;
+  font-family: 'Covered By Your Grace', cursive;
+  margin-top: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(54, 25, 25, 0.5);
+  transform: translate(0, -50px);
+}
+.select .window {
+  opacity: 1;
+  position: relative;
+  top: 120px;
+  width: 600px;
+  height: 350px;
+  background: white;
+  margin: 0 auto;
+  border-radius: 20px;
+  text-align: center;
+}
+.select .window .header {
+  width: 100%;
+  height: 45px;
+  background: slategrey;
+}
+.select .window .header .headerTitle {
+  font-size: 20px;
+  position: absolute;
+  line-height: 45px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+.select .window .header a {
+  float: right;
+  margin: 15px;
+}
+.select .window .question {
+  padding-top: 120px;
+}
+.select .window .question a {
+  font-size: 300px;
+  line-height: 0;
+  margin: 50px;
+  color: midnightblue;
+}
+.select .window .question a:hover {
+  color: red;
+}
+.select .window .question span {
+  font-size: 50px;
+}
+.board {
+  margin-top: 50px;
+  padding: 20px;
+  background: black;
+}
+.board table {
+  width: 100%;
+  height: 100%;
+  table-layout: fixed;
+}
+.board table tr td {
+  overflow: hidden;
+  width: 33.33%;
+  height: 33.33%;
+  border: solid 5px white;
+}
+.board table tr td a p {
+  background: black;
+  font-family: 'Covered By Your Grace', cursive;
+  font-size: 100px;
+  text-align: center;
+  line-height: 120px;
+  color: black;
+}

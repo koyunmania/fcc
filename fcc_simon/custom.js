@@ -228,29 +228,27 @@ function playComp( start ){
 	}
 	
 	// If not finished evaluate all combinations
-	var result = { wins: 0, looses: 0, alert_: 0, tie: 0 };
+	var result = { wins: 0, looses: 0 };
 	function getAllPossibileWins( gameObj ) {
 		var counter = 0;
 		gameObj.riskMat.forEach( function( value ){
 			if( value === -2 )
-				counter = counter + 1;
+				counter++;
 		});
-		if( counter === 2 ) { //###
-			result.alert_ = result.alert_ + 1;
-			return "alert";
+		if( counter === 2 ) { //return a loose if double riskLevel = -2
+			result.looses++;
+			return "loose";
 		}
 		if( gameObj.risk.riskIndex === 3  ) {
-			result.wins = result.wins + 1;
+			result.wins++ ;
 			return "win";
 		}
 		else if( gameObj.risk.riskIndex === -3 ) {
-			result.looses = result.looses + 1;
+			result.looses++;
 			return "loose";
 		}
-		else if ( gameObj.gameLevel === 0 ) {
-			result.tie = result.tie + 1;
+		else if ( gameObj.gameLevel === 0 )
 			return "tie";
-		}
 			
 		for ( var i = 0; i < gameObj.board.length; i++ ) {
 			if ( gameObj.board[i] === 0 ) {
@@ -283,51 +281,29 @@ function playComp( start ){
 	// get the best empty cell to play
 	// curring algorithm minimising looses
 	function bestMove( possibleMoves ){
-		var looseMin = 1000000;
-		var alertMin = 1000000;
-		var optProb = 0;
+		var looseProbability = 1000000;
 		var winnerIndex = 0;
 		var winnerWins = 0;
 		var winnerLooses = 0;
-		var winnerAlerts = 0;
 		possibleMoves.forEach( function( possibleMove, index){
 			getAllPossibileWins( possibleMove );
-			if( result.alert_ < alertMin ){
-				looseMin = result.looses;
-				alertMin = result.alert_;
-				winnerIndex = index;
-				winnerWins = result.wins;
-				winnerLooses = result.looses;
-				winnerAlerts = result.alert_;
-			}
-			else if ( result.alert_ === alertMin && result.wins / result.looses  > optProb ) {
-				optProb = result.wins / result.looses;
-				looseMin = result.looses;
-				alertMin = result.alert_;
-				winnerIndex = index;
-				winnerWins = result.wins;
-				winnerLooses = result.looses;
-				winnerAlerts = result.alert_;
-			}
-			else if( result.alert_ === alertMin && result.wins / result.looses  === optProb && result.looses < looseMin ) {
-				looseMin = result.looses;
+			if( result.looses < looseProbability ) {
+				looseProbability = result.looses;
 				winnerIndex = index;
 				winnerWins = result.wins;
 				winnerLooses = result.looses;
 			}
-			console.log( "Alerts: " + result.alert_ + " Ratio: " + Math.ceil(  result.wins * 100 / result.looses  ) / 100 + " wins: " + result.wins + "	Losts: " + result.looses + "	Tie: " + result.tie );
+			console.log( "Ratio: " + Math.ceil(  result.wins * 100 / result.looses  ) / 100 + " wins: " + result.wins + "	Losts: " + result.looses );
 			console.log( possibleMove.board[0]  + "	" + possibleMove.board[1]  + "	" + possibleMove.board[2]);
 			console.log( possibleMove.board[3]  + "	" + possibleMove.board[4]  + "	" + possibleMove.board[5]);
 			console.log( possibleMove.board[6]  + "	" + possibleMove.board[7]  + "	" + possibleMove.board[8]);
 			result.wins = 0;
 			result.looses = 0;
-			result.tie = 0;
-			result.alert_ = 0;
 		});
 		console.log( "######################" )
 		console.log( "######## FINAL #######" )
 		console.log( "######################" )
-		console.log( "Alerts: " + winnerAlerts + " Ratio: " + Math.ceil(  winnerWins * 100 / winnerLooses  ) / 100 + " wins: " + winnerWins + "	Losts: " + winnerLooses );
+		console.log( "Ratio: " + Math.ceil(  winnerWins * 100 / winnerLooses  ) / 100 + " wins: " + winnerWins + "	Losts: " + winnerLooses );
 		console.log( possibleMoves[ winnerIndex ].board[0]  + "	" + possibleMoves[ winnerIndex ].board[1]  + "	" + possibleMoves[ winnerIndex ].board[2]);
 		console.log( possibleMoves[ winnerIndex ].board[3]  + "	" + possibleMoves[ winnerIndex ].board[4]  + "	" + possibleMoves[ winnerIndex ].board[5]);
 		console.log( possibleMoves[ winnerIndex ].board[6]  + "	" + possibleMoves[ winnerIndex ].board[7]  + "	" + possibleMoves[ winnerIndex ].board[8]);
