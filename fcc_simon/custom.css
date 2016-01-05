@@ -169,7 +169,7 @@ a {
   float: right;
   border-bottom-right-radius: 100%;
 }
-.game .background .x {
+.game .background .middle {
   position: absolute;
   height: 230px;
   width: 230px;
@@ -182,24 +182,28 @@ a {
   border: solid 15px #333333;
   text-align: center;
 }
-.game .background .x span {
+.game .background .middle .title {
   margin-top: 30px;
   display: block;
   left: 50%;
   font-size: 60px;
   font-weight: bold;
 }
-.game .background .x span .registered {
+.game .background .middle .title .registered {
   display: inline-block;
   font-size: 15px;
 }
-.game .background .x .controls .counter {
+.game .background .middle span {
+  font-size: 10px;
+  margin: 0;
+}
+.game .background .middle .controls .counter {
   float: left;
   margin-left: 25px;
   margin-top: 10px;
   width: 60px;
 }
-.game .background .x .controls .counter .countDispl {
+.game .background .middle .controls .counter .countDispl {
   height: 35px;
   background: #32050c;
   margin-bottom: 10px;
@@ -207,22 +211,18 @@ a {
   border: solid 4px #333333;
   text-align: center;
 }
-.game .background .x .controls .counter .countDispl span {
+.game .background .middle .controls .counter .countDispl span {
   color: #9f0f17;
   font-size: 25px;
   line-height: 35px;
 }
-.game .background .x .controls .counter span {
-  font-size: 10px;
-  margin: 0;
-}
-.game .background .x .controls .start {
+.game .background .middle .controls .start {
+  margin-top: 25px;
   float: left;
-  margin-left: 25px;
-  margin-top: 10px;
   width: 60px;
+  padding-left: 15px;
 }
-.game .background .x .controls .start .startBtn {
+.game .background .middle .controls .start .startBtn {
   height: 20px;
   width: 20px;
   margin: 0 auto;
@@ -232,12 +232,51 @@ a {
   border: solid 4px #333333;
   text-align: center;
 }
-.game .background .x .controls .start .startBtn span {
-  color: #9f0f17;
-  font-size: 25px;
-  line-height: 35px;
+.game .background .middle .controls .strict {
+  margin-top: 10px;
+  float: right;
+  width: 60px;
+  padding-right: 10px;
 }
-.game .background .x .controls .start span {
-  font-size: 10px;
-  margin: 0;
+.game .background .middle .controls .strict .led {
+  width: 7px;
+  height: 7px;
+  background: #32050c;
+  border: solid 1px #333333;
+  border-radius: 100%;
+  margin: 0 auto;
+  margin-bottom: 5px;
+}
+.game .background .middle .controls .strict .strictBtn {
+  height: 20px;
+  width: 20px;
+  margin: 0 auto;
+  background: #ffff00;
+  margin-bottom: 10px;
+  border-radius: 100%;
+  border: solid 4px #333333;
+  text-align: center;
+}
+.game .background .middle .onOff {
+  float: left;
+}
+.game .background .middle .onOff .off {
+  margin-left: 75px;
+}
+.game .background .middle .onOff .swich {
+  transform: translate(0, 5px);
+  margin-top: 10px;
+  border-radius: 5px;
+  display: inline-block;
+  height: 20px;
+  width: 40px;
+  background: #333333;
+}
+.game .background .middle .onOff .swich .swich-btn {
+  float: right;
+  width: 16px;
+  height: 16px;
+  background: #3193de;
+  border-radius: 5px;
+  border: solid 2px #333333;
 }

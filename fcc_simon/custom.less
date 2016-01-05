@@ -109,7 +109,7 @@ a {
 			float: right;
 			border-bottom-right-radius: 100%;
 		}
-		.x {
+		.middle {
 			position: absolute;
 			height: 230px;
 			width: 230px;
@@ -121,7 +121,7 @@ a {
 			border-radius: 100%;
 			border: solid 15px @back;
 			text-align: center; 
-			span {
+			.title {
 				margin-top: 30px;
 				display: block;
 				left: 50%;
@@ -131,6 +131,10 @@ a {
 					display: inline-block;
 					font-size: 15px;
 				}
+			}
+			span {
+				font-size: 10px;
+				margin: 0;
 			}
 			.controls {
 				.counter {
@@ -151,17 +155,12 @@ a {
 							line-height: 35px;
 						}
 					}
-					span {
-						font-size: 10px;
-						margin: 0;
-					}
 				}
 				.start {
+					margin-top: 25px;
 					float: left;
-					margin-left: 25px;
-					margin-top: 10px;
 					width: 60px;
-					
+					padding-left: 15px;
 					.startBtn {
 						height: 20px;
 						width: 20px;
@@ -171,15 +170,54 @@ a {
 						border-radius: 100%;
 						border: solid 4px @back;
 						text-align: center;  
-						span {
-							color: @red;
-							font-size: 25px;
-							line-height: 35px;
-						}
 					}
-					span {
-						font-size: 10px;
-						margin: 0;
+				}
+				.strict {
+					margin-top: 10px;
+					float: right;
+					width: 60px;
+					padding-right: 10px;
+					.led {
+						width: 7px;
+						height: 7px;
+						background: #32050c;
+						border: solid 1px @back;
+						border-radius: 100%;
+						margin: 0 auto;
+						margin-bottom: 5px;
+					}
+					.strictBtn {
+						height: 20px;
+						width: 20px;
+						margin: 0 auto;
+						background: @button-yellow;
+						margin-bottom: 10px;
+						border-radius: 100%;
+						border: solid 4px @back;
+						text-align: center;  
+					}
+				}
+			}
+			.onOff {
+				float: left;
+				.off {
+					margin-left: 75px;
+				}
+				.swich {
+					transform: translate(0,5px);
+					margin-top: 10px;
+					border-radius: 5px;
+					display: inline-block;
+					height: 20px;
+					width: 40px;
+					background: @back;
+					.swich-btn {
+						float: right;
+						width: 16px;
+						height: 16px;
+						background: @button-blue;
+						border-radius: 5px;
+						border: solid 2px @back;
 					}
 				}
 			}
