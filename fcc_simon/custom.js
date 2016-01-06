@@ -15,12 +15,30 @@ $(document).ready( function(){
 			$(".swich-btn").css( { float: "left" } );
 			$(".countDispl span").text( "- -" );
 			$(".countDispl span").css({ color: "#4C0812" });
+
+			// Cancel all timeouts
+			var highestTimeoutId = setTimeout(";");
+			for (var i = 0 ; i < highestTimeoutId ; i++) {
+				clearTimeout(i); 
+			}
+			
+			//reset pointers
+			$(".segment").attr("style", "pointer-events: none;");
+			$(".segment").attr("style", "cursor: default;");
+			
+			//reset all segments
+			$(".greenSegment").css({ background: "#00a74a" });
+			$(".redSegment").css({ background: "#9f0f17" }); 
+			$(".blueSegment").css({ background: "#094a8f" });
+			$(".yellowSegment").css({ background: "#cca707" });
+			
 			onOff = false;
 		}
 		else {
 			$(".swich-btn").css( { float: "right" } );
 			$(".countDispl span").text( "- -" );
 			$(".countDispl span").css({ color: "red" });
+			
 			onOff = true; 
 		}
 		e.preventDefault();
