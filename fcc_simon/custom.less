@@ -81,12 +81,20 @@ a {
 		border-radius: 50%;
 		margin-top: 60px;
 		border: solid 30px @back;
+		.hover {
+			&:hover {
+				opacity: .6;
+			}
+		}
 		.greenSegment {
 			background: @green;
 			width: 50%;
 			height: 50%;
 			float: left;
 			border-top-left-radius: 100%;
+			//&:hover {
+			//	background: lighten( @green, 20% );
+			//}
 		}
 		.redSegment {
 			background: @red;
@@ -124,8 +132,7 @@ a {
 			.title {
 				margin-top: 30px;
 				display: block;
-				left: 50%;
-				font-size: 60px;
+				font-size: 55px;
 				font-weight: bold;
 				.registered {
 					display: inline-block;
@@ -145,13 +152,13 @@ a {
 					.countDispl {
 						height: 35px;
 						background: #32050c;
-						margin-bottom: 10px;
+						margin-bottom: 6px;
 						border-radius: 10px;
 						border: solid 4px @back;
 						text-align: center;  
 						span {
-							color: @red;
-							font-size: 25px;
+							color: #4C0812;
+							font-size: 20px;
 							line-height: 35px;
 						}
 					}
@@ -166,14 +173,18 @@ a {
 						width: 20px;
 						margin: 0 auto;
 						background: @button-red;
-						margin-bottom: 10px;
+						margin-bottom: 6px;
 						border-radius: 100%;
 						border: solid 4px @back;
-						text-align: center;  
+						text-align: center;
+						box-shadow : 0px 2px 3px #222;
+						&:active {
+							box-shadow : 0 1px 1px #292929;
+						}
 					}
 				}
 				.strict {
-					margin-top: 10px;
+					margin-top: 9px;
 					float: right;
 					width: 60px;
 					padding-right: 10px;
@@ -181,7 +192,7 @@ a {
 						width: 7px;
 						height: 7px;
 						background: #32050c;
-						border: solid 1px @back;
+						border: solid 2px @back;
 						border-radius: 100%;
 						margin: 0 auto;
 						margin-bottom: 5px;
@@ -191,10 +202,14 @@ a {
 						width: 20px;
 						margin: 0 auto;
 						background: @button-yellow;
-						margin-bottom: 10px;
+						margin-bottom: 6px;
 						border-radius: 100%;
 						border: solid 4px @back;
-						text-align: center;  
+						text-align: center;
+						box-shadow : 0px 2px 3px #222;
+						&:active {
+							box-shadow : 0 1px 1px #292929;
+						}
 					}
 				}
 			}
@@ -205,14 +220,16 @@ a {
 				}
 				.swich {
 					transform: translate(0,5px);
-					margin-top: 10px;
+					margin-top: 15px;
 					border-radius: 5px;
 					display: inline-block;
 					height: 20px;
 					width: 40px;
 					background: @back;
+					margin-left: 5px;
+					margin-right: 5px;
 					.swich-btn {
-						float: right;
+						float: left; //right by javascript
 						width: 16px;
 						height: 16px;
 						background: @button-blue;
