@@ -1,27 +1,30 @@
 var userNumbs = [];
 var simonNumbs = [];
+var oldSimonNumbs = [];
 var wait = 1000;
+var userTimeout;
+var strict = false;
+
+//sounds
+var a = new Audio("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3");
+var b = new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3");
+var c = new Audio("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3");
+var d = new Audio("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3");
 
 $(document).ready( function(){
 	var onOff = false;
-	var strict = false;
 	
-	$(".segment").attr("style", "pointer-events: none;");
-	$(".segment").attr("style", "cursor: default;");
+	//disable segment anchora
+	enableSegment( false );
+	
+	//On Off button/
+	$(".onOff a").click(function(e){
 		
-	//On Off button
-	$(".onOff").click(function(e){
-		if( onOff ) {
+		if( onOff ) { //turned off
 			$(".swich-btn").css( { float: "left" } );
 			$(".countDispl span").text( "- -" );
 			$(".countDispl span").css({ color: "#4C0812" });
 
-			// Cancel all timeouts
-			var highestTimeoutId = setTimeout(";");
-			for (var i = 0 ; i < highestTimeoutId ; i++) {
-				clearTimeout(i); 
-			}
-			
 			//reset pointers
 			$(".segment").attr("style", "pointer-events: none;");
 			$(".segment").attr("style", "cursor: default;");
@@ -32,9 +35,10 @@ $(document).ready( function(){
 			$(".blueSegment").css({ background: "#094a8f" });
 			$(".yellowSegment").css({ background: "#cca707" });
 			
+			resetGame();
 			onOff = false;
 		}
-		else {
+		else { //turned on
 			$(".swich-btn").css( { float: "right" } );
 			$(".countDispl span").text( "- -" );
 			$(".countDispl span").css({ color: "red" });
@@ -69,25 +73,41 @@ $(document).ready( function(){
 	
 	// on segment click
 	$(".greenSegment").click(function(e){
-		userNumbs.push( 1 );
-		e.preventDefault();
+		if( !$(this).hasClass("disabled") ) {
+			userNumbs.push( 1 );
+			a.play();
+			checkUserInput();
+			e.preventDefault();
+		}
 	});
 	$(".redSegment").click(function(e){
-		userNumbs.push( 2 );
-		e.preventDefault();
+		if( !$(this).hasClass("disabled") ) {
+			userNumbs.push( 2 );
+			b.play();
+			checkUserInput();
+			e.preventDefault();
+		}
 	});
 	$(".blueSegment").click(function(e){
-		userNumbs.push( 3 );
-		e.preventDefault();
+		if( !$(this).hasClass("disabled") ) {
+			userNumbs.push( 3 );
+			c.play();
+			checkUserInput();
+			e.preventDefault();
+		}
 	});
 	$(".yellowSegment").click(function(e){
-		userNumbs.push( 4 );
-		e.preventDefault();
+		if( !$(this).hasClass("disabled") ) {
+			userNumbs.push( 4 );
+			d.play();
+			checkUserInput();
+			e.preventDefault();
+		}
 	});
 });
 
+// (seq + 1) x ( display blink "- -" (#4C0812, red) ), starts the game
 function displayBlink( seq, text ){
-	// (seq + 1) x ( display blink "- -" (#4C0812, red) )
 	$(".countDispl span").text( text );
 	$(".countDispl span").css({ color: "#4C0812" });
 	setTimeout(function(){
@@ -103,14 +123,23 @@ function displayBlink( seq, text ){
 	}, wait/4 );
 }
 
+// generates simonNumbs and calls the function to visualise them
 function play(level, wait ){
+	
 	$(".countDispl span").text( Math.floor(level/10) + " " + level%10 );
 	$(".countDispl span").css({ color: "red" });
-	simonNumbs.push( Math.ceil(Math.random()*4) );
+	
+	if( oldSimonNumbs.length > simonNumbs.length ){
+		simonNumbs.push( oldSimonNumbs[ simonNumbs.length ] );
+	}
+	else {
+		simonNumbs.push( Math.ceil(Math.random()*4) );
+	}
 	var cloneSimon = simonNumbs.slice(); 
 	iterate( cloneSimon, 0, wait );
 }
 
+// iterates through simonNums and visualise it with speed $wait
 // green[1], red[2], blue[3], yellow[4]
 function iterate( cloneSimon, index, wait ){
 	if( index === cloneSimon.length )
@@ -118,84 +147,140 @@ function iterate( cloneSimon, index, wait ){
 	switch( cloneSimon[ index ] ){
 		case 1:
 			$(".greenSegment").css({ background: "#0eff79" });
+			a.play();
 			setTimeout( function(){ 
 				$(".greenSegment").css({ background: "#00a74a" });
-				if ( iterate( cloneSimon, index + 1, wait ) === 0 ){
-					getUserSimon();
-				}
-			}, wait);
+				setTimeout( function(){
+					if ( iterate( cloneSimon, index + 1, wait ) === 0 ){
+						getUserSimon();
+					}
+				}, wait*0.3);
+			}, wait*0.7);
 			break;
 		case 2:
 			$(".redSegment").css({ background: "#eb2934" });
+			b.play();
 			setTimeout( function(){ 
-				$(".redSegment").css({ background: "#9f0f17" }); 
-				if ( iterate( cloneSimon, index + 1, wait ) === 0 ){
-					getUserSimon();
-				}
-			}, wait);
+				$(".redSegment").css({ background: "#9f0f17" });
+				setTimeout( function(){
+					if ( iterate( cloneSimon, index + 1, wait ) === 0 ){
+						getUserSimon();
+					}
+				}, wait*0.3); 
+			}, wait*0.7);
 			break;
 		case 3:
 			$(".blueSegment").css({ background: "#0f7cef" });
+			c.play();
 			setTimeout( function(){ 
 				$(".blueSegment").css({ background: "#094a8f" });
-				if ( iterate( cloneSimon, index + 1, wait ) === 0 ){
-					getUserSimon();
-				}
-			}, wait);
+				setTimeout( function(){
+					if ( iterate( cloneSimon, index + 1, wait ) === 0 ){
+						getUserSimon();
+					}
+				}, wait*0.3);
+			}, wait*0.7);
 			break;
 		case 4:
 			$(".yellowSegment").css({ background: "#f8d641" });
+			d.play();
 			setTimeout( function(){ 
 				$(".yellowSegment").css({ background: "#cca707" });
-				if ( iterate( cloneSimon, index + 1, wait ) === 0 ){
-					getUserSimon();
-				}
-			}, wait);
+				setTimeout( function(){
+					if ( iterate( cloneSimon, index + 1, wait ) === 0 ){
+						getUserSimon();
+					}
+				}, wait*0.3);
+			}, wait*0.7);
 			break;
 	}
 }
 
+// gets user input
 function getUserSimon(){
 	userNumbs = [];
-	$(".segment").attr("style", "pointer-events: auto;");
-	$(".segment").attr("style", "cursor: pointer;");
-	$(".segment").addClass("hover");
-	setTimeout( function(){
-		$(".segment").attr("style", "pointer-events: none;");
-		$(".segment").attr("style", "cursor: default;");
-		$(".segment").removeClass("hover");
+	enableSegment( true );
+	userTimeout =  setTimeout( function(){
+		enableSegment( false );
 		if( userNumbs.length < simonNumbs.length ){
 			resetGame();
 			console.log( "getUserSimon empty!!!" );
 			displayBlink( 2, "! !" );
 		}
 		else {
-			var flag = true;
-			//compare simonNums and userNums 
-			userNumbs.forEach( function( userNumb, index ){
-				if( userNumb !== simonNumbs[ index ] ){
-					flag = false;
-				}
-			});
+			console.log( "getUserSimon True!!!" );
 			
-			//if all nums are equal
-			if( flag ) {
-				console.log( "getUserSimon True!!!" );
-				play( simonNumbs.length + 1, wait );
-			}
-			else {
+		//Change in gamespeed and game over
+		switch( simonNumbs.length + 1 ) {
+			case 5:
+				wait = wait * 0.8;
+				break;
+			case 9:
+				wait = wait * 0.8;
+				break;
+			case 13:
+				wait = wait * 0.8;
+				break;
+			case 21:
 				resetGame();
-				console.log( "getUserSimon False!!!" );
-				displayBlink( 2, "! !" );
-			}
+				displayBlink( 1, "WON" );
+				break;
+		}
+			
+			play( simonNumbs.length + 1, wait );
 		}
 	}, wait*simonNumbs.length);
 }
 
+// reset geame strictly or normal
 function resetGame(){
-	//displayBlink( 2, "! !" );
-	userNumbs = [];
+	if( strict ) {
+		userNumbs = [];
+		oldSimonNumbs = [];
+	}
+	else {
+		userNumbs = [];
+		if( oldSimonNumbs.length < simonNumbs.length ) {
+			oldSimonNumbs = simonNumbs.slice(); 
+		}
+	}
 	simonNumbs = [];
-	$(".segment").attr("style", "pointer-events: none;");
-	$(".segment").attr("style", "cursor: default;");
+	
+	enableSegment( false );
+
+	// Cancel all timeouts
+	var highestTimeoutId = setTimeout(";");
+	for (var i = 0 ; i < highestTimeoutId ; i++) {
+		clearTimeout(i); 
+	}
+}
+
+//compare simonNums and userNums
+function checkUserInput(){
+	var flag = true;
+	userNumbs.forEach( function( userNumb, index ){
+		if( userNumb !== simonNumbs[ index ] ){
+			flag = false;
+			clearTimeout( userTimeout );
+			resetGame();
+			console.log( "getUserSimon False!!!" );
+			displayBlink( 2, "! !" );
+		}
+	});
+}
+
+// enable/disable segment click
+function enableSegment( value ){
+	if( value ){
+		$(".segment").attr("style", "pointer-events: auto;");
+		$(".segment").attr("style", "cursor: pointer;");
+		$(".segment").addClass("hover");
+		$(".segment").removeClass("disabled");
+	}
+	else {
+		$(".segment").attr("style", "pointer-events: none;");
+		$(".segment").attr("style", "cursor: default;");
+		$(".segment").removeClass("hover");
+		$(".segment").addClass("disabled");
+	}
 }
